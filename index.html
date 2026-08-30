@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生乳量換算</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <div>
+        <p class="eyebrow">RAW MILK CALCULATOR</p>
+        <h1>生乳量換算</h1>
+        <p class="subtitle">輸入各商品瓶數，自動換算所需生乳量</p>
+      </div>
+    </header>
+
+    <section class="product-list">
+      <article class="product-card">
+        <div class="product-info">
+          <div class="product-number">01</div>
+          <div>
+            <h2>阿秀鮮乳</h2>
+            <p class="formula">瓶數 × 0.936 × 1.03 × 1.08</p>
+          </div>
+        </div>
+        <div class="calculator-row">
+          <div class="input-group">
+            <label for="ashow">瓶數</label>
+            <div class="input-wrapper">
+              <input type="number" id="ashow" min="0" step="1" value="0">
+              <span>瓶</span>
+            </div>
+          </div>
+          <div class="result-group">
+            <span class="result-label">所需生乳</span>
+            <div>
+              <strong id="ashow-result">0.00</strong>
+              <span class="unit">kg</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-info">
+          <div class="product-number">02</div>
+          <div>
+            <h2>小阿秀鮮乳</h2>
+            <p class="formula">瓶數 × 0.29 × 1.03 × 1.08</p>
+          </div>
+        </div>
+        <div class="calculator-row">
+          <div class="input-group">
+            <label for="small-ashow">瓶數</label>
+            <div class="input-wrapper">
+              <input type="number" id="small-ashow" min="0" step="1" value="0">
+              <span>瓶</span>
+            </div>
+          </div>
+          <div class="result-group">
+            <span class="result-label">所需生乳</span>
+            <div>
+              <strong id="small-ashow-result">0.00</strong>
+              <span class="unit">kg</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-info">
+          <div class="product-number">03</div>
+          <div>
+            <h2>透明鮮乳</h2>
+            <p class="formula">瓶數 × 0.936 × 1.03 × 1.08</p>
+          </div>
+        </div>
+        <div class="calculator-row">
+          <div class="input-group">
+            <label for="transparent-milk">瓶數</label>
+            <div class="input-wrapper">
+              <input type="number" id="transparent-milk" min="0" step="1" value="0">
+              <span>瓶</span>
+            </div>
+          </div>
+          <div class="result-group">
+            <span class="result-label">所需生乳</span>
+            <div>
+              <strong id="transparent-milk-result">0.00</strong>
+              <span class="unit">kg</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-info">
+          <div class="product-number">04</div>
+          <div>
+            <h2>秀姑巒鮮乳</h2>
+            <p class="formula">瓶數 × 0.936 × 1.03</p>
+          </div>
+        </div>
+        <div class="calculator-row">
+          <div class="input-group">
+            <label for="siouguluan">瓶數</label>
+            <div class="input-wrapper">
+              <input type="number" id="siouguluan" min="0" step="1" value="0">
+              <span>瓶</span>
+            </div>
+          </div>
+          <div class="result-group">
+            <span class="result-label">所需生乳</span>
+            <div>
+              <strong id="siouguluan-result">0.00</strong>
+              <span class="unit">kg</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-info">
+          <div class="product-number">05</div>
+          <div>
+            <h2>優選</h2>
+            <p class="formula">瓶數 × 1.75 × 1.03</p>
+          </div>
+        </div>
+        <div class="calculator-row">
+          <div class="input-group">
+            <label for="premium">瓶數</label>
+            <div class="input-wrapper">
+              <input type="number" id="premium" min="0" step="1" value="0">
+              <span>瓶</span>
+            </div>
+          </div>
+          <div class="result-group">
+            <span class="result-label">所需生乳</span>
+            <div>
+              <strong id="premium-result">0.00</strong>
+              <span class="unit">kg</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="loss-summary">
+      <h2>料損</h2>
+      <div class="loss-row"><span>阿秀鮮乳＋小阿秀鮮乳＋透明鮮乳</span><strong><span id="ashow-loss">0</span> kg</strong></div>
+      <div class="loss-row"><span>秀姑巒鮮乳</span><strong><span id="siouguluan-loss">0</span> kg</strong></div>
+      <div class="loss-row"><span>優選</span><strong><span id="premium-loss">0</span> kg</strong></div>
+      <div class="loss-row"><span>料損合計</span><strong><span id="loss-total">0</span> kg</strong></div>
+      <p class="loss-note">15 噸 = 15,000 kg；未輸入該商品時不計料損。</p>
+    </section>
+
+    <section class="total-card">
+      <div>
+        <p>TOTAL RAW MILK</p>
+        <h2>生乳需求總量（含料損）</h2>
+      </div>
+      <div class="total-result">
+        <strong id="total-result">0.00</strong>
+        <span>kg</span>
+      </div>
+    </section>
+
+    <button id="reset-button" class="reset-button">清除全部</button>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
