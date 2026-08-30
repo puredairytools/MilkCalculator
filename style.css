@@ -272,3 +272,129 @@ input[type="number"] { -moz-appearance: textfield; }
 .loss-row:last-child { border-bottom: 0; }
 .loss-row strong { white-space: nowrap; }
 .loss-note { margin: 12px 0 0; font-size: 0.85rem; opacity: 0.65; }
+
+/* Compact mobile layout: keep all product bottle inputs visible on one screen */
+@media (max-width: 600px) {
+  body {
+    padding: 14px 12px 24px;
+  }
+
+  .header {
+    margin-bottom: 12px;
+  }
+
+  .eyebrow,
+  .subtitle {
+    display: none;
+  }
+
+  .header h1 {
+    font-size: 26px;
+    line-height: 1.1;
+    letter-spacing: -0.8px;
+  }
+
+  .product-list {
+    gap: 8px;
+  }
+
+  .product-card {
+    display: grid;
+    grid-template-columns: minmax(96px, 0.8fr) minmax(190px, 1.4fr);
+    align-items: center;
+    gap: 10px;
+    padding: 9px 11px;
+    border-radius: 14px;
+  }
+
+  .product-card:hover {
+    transform: none;
+  }
+
+  .product-info {
+    gap: 0;
+    padding: 0;
+    border-bottom: 0;
+    min-width: 0;
+  }
+
+  .product-number,
+  .formula {
+    display: none;
+  }
+
+  .product-info h2 {
+    font-size: 16px;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .calculator-row {
+    display: grid;
+    grid-template-columns: minmax(105px, 1fr) minmax(72px, auto);
+    align-items: center;
+    gap: 8px;
+    margin-top: 0;
+  }
+
+  .input-group label,
+  .result-label {
+    display: none;
+  }
+
+  .input-wrapper input {
+    height: 46px;
+    border-radius: 11px;
+    padding: 0 38px 0 12px;
+    font-size: 18px;
+  }
+
+  .input-wrapper span {
+    right: 11px;
+    font-size: 12px;
+  }
+
+  .result-group {
+    text-align: right;
+    min-width: 0;
+  }
+
+  .result-group strong {
+    font-size: 18px;
+  }
+
+  .result-group .unit {
+    margin-left: 2px;
+    font-size: 11px;
+  }
+
+  .loss-summary {
+    margin-top: 14px;
+  }
+
+  .total-card {
+    margin-top: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .product-card {
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 7px;
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .product-info h2 {
+    font-size: 15px;
+  }
+
+  .calculator-row {
+    grid-template-columns: minmax(95px, 1fr) minmax(62px, auto);
+    gap: 5px;
+  }
+
+  .result-group strong {
+    font-size: 16px;
+  }
+}
