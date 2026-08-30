@@ -9,12 +9,6 @@ const products = {
     result: document.getElementById("small-ashow-result"),
     calculate: (bottles) => bottles * 0.29 * 1.03 * 1.08
   },
-
-  transparentMilk: {
-    input: document.getElementById("transparent-milk"),
-    result: document.getElementById("transparent-milk-result"),
-    calculate: (bottles) => bottles * 0.936 * 1.03 * 1.08
-  },
   siouguluan: {
     input: document.getElementById("siouguluan"),
     result: document.getElementById("siouguluan-result"),
@@ -53,7 +47,7 @@ function updateCalculation() {
   });
 
   // 料損規則：15 噸 = 15,000 kg。沒有生產該商品時，料損為 0。
-  const ashowCombined = milk.ashow + milk.smallAshow + milk.transparentMilk;
+  const ashowCombined = milk.ashow + milk.smallAshow;
   const ashowLoss = ashowCombined > 0 ? (ashowCombined >= 15000 ? 648 : 432) : 0;
   const siouguluanLoss = milk.siouguluan > 0 ? 180 : 0;
   const premiumLoss = milk.premium > 0 ? (milk.premium >= 15000 ? 400 : 200) : 0;
