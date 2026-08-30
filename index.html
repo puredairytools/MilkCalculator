@@ -69,9 +69,36 @@
         </div>
       </article>
 
+
       <article class="product-card">
         <div class="product-info">
           <div class="product-number">03</div>
+          <div>
+            <h2>透明鮮乳</h2>
+            <p class="formula">瓶數 × 0.936 × 1.03 × 1.08</p>
+          </div>
+        </div>
+        <div class="calculator-row">
+          <div class="input-group">
+            <label for="transparent" class="visually-hidden">瓶數</label>
+            <div class="input-wrapper">
+              <input type="number" id="transparent" min="0" step="1" value="0">
+              <span>瓶</span>
+            </div>
+          </div>
+          <div class="result-group">
+            <div class="result-line">
+              <span class="result-label">所需生乳</span>
+              <strong id="transparent-result">0.00</strong>
+              <span class="unit">kg</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-info">
+          <div class="product-number">04</div>
           <div>
             <h2>秀姑巒鮮乳</h2>
             <p class="formula">瓶數 × 0.936 × 1.03</p>
@@ -97,7 +124,7 @@
 
       <article class="product-card">
         <div class="product-info">
-          <div class="product-number">04</div>
+          <div class="product-number">05</div>
           <div>
             <h2>優選</h2>
             <p class="formula">瓶數 × 1.75 × 1.03</p>
@@ -124,7 +151,7 @@
 
     <section class="loss-summary">
       <h2>料損</h2>
-      <div class="loss-row"><span>阿秀鮮乳＋小阿秀鮮乳</span><strong><span id="ashow-loss">0</span> kg</strong></div>
+      <div class="loss-row"><span>阿秀鮮乳＋小阿秀鮮乳＋透明鮮乳</span><strong><span id="ashow-loss">0</span> kg</strong></div>
       <div class="loss-row"><span>秀姑巒鮮乳</span><strong><span id="siouguluan-loss">0</span> kg</strong></div>
       <div class="loss-row"><span>優選</span><strong><span id="premium-loss">0</span> kg</strong></div>
       <div class="loss-row"><span>料損合計</span><strong><span id="loss-total">0</span> kg</strong></div>
