@@ -32,6 +32,9 @@ const ashowLossResult = document.getElementById("ashow-loss");
 const siouguluanLossResult = document.getElementById("siouguluan-loss");
 const premiumLossResult = document.getElementById("premium-loss");
 const lossTotalResult = document.getElementById("loss-total");
+const ashowOriginalResult = document.getElementById("ashow-original");
+const siouguluanOriginalResult = document.getElementById("siouguluan-original");
+const premiumOriginalResult = document.getElementById("premium-original");
 
 function getBottleCount(input) {
   let value = Number(input.value);
@@ -57,6 +60,10 @@ function updateCalculation() {
   const siouguluanLoss = milk.siouguluan > 0 ? 180 : 0;
   const premiumLoss = milk.premium > 0 ? (milk.premium >= 15000 ? 400 : 200) : 0;
   const totalLoss = ashowLoss + siouguluanLoss + premiumLoss;
+
+  ashowOriginalResult.textContent = ashowCombined.toFixed(2);
+  siouguluanOriginalResult.textContent = milk.siouguluan.toFixed(2);
+  premiumOriginalResult.textContent = milk.premium.toFixed(2);
 
   ashowLossResult.textContent = ashowLoss;
   siouguluanLossResult.textContent = siouguluanLoss;
