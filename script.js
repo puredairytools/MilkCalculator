@@ -100,13 +100,15 @@ function buildShareText() {
     const bottles = getBottleCount(product.input);
     if (bottles > 0) {
       const name = product.input.closest(".product-card").querySelector("h2").textContent;
-      lines.push(`${name}：${bottles} 瓶／所需生乳 ${product.result.textContent} kg`);
+      lines.push(name);
+      lines.push(`${bottles} 瓶｜${product.result.textContent} kg`);
+      lines.push("");
     }
   });
 
-  lines.push("");
-  lines.push(`料損合計：${lossTotalResult.textContent} kg`);
-  lines.push(`生乳需求總量（含料損）：${totalResult.textContent} kg`);
+  lines.push("────────");
+  lines.push(`料損　${lossTotalResult.textContent} kg`);
+  lines.push(`總計　${totalResult.textContent} kg`);
 
   return lines.join("\n");
 }
