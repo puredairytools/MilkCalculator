@@ -94,15 +94,18 @@ Object.values(products).forEach((product) => {
 
 
 function buildShareText() {
-  const lines = ["【生乳量換算】"];
+  const lines = ["【生乳量換算】\n"];
+
+  let index = 1;
 
   Object.values(products).forEach((product) => {
     const bottles = getBottleCount(product.input);
     if (bottles > 0) {
       const name = product.input.closest(".product-card").querySelector("h2").textContent;
-      lines.push(name);
+      lines.push(`${index}. ${name}`);
       lines.push(`${bottles} 瓶｜${product.result.textContent} kg`);
       lines.push("");
+      index += 1;
     }
   });
 
