@@ -100,7 +100,7 @@ body {
 
 .formula {
   margin-top: 5px;
-  font-size: 16px;
+  font-size: 0.7rem;
   color: var(--secondary-text);
 }
 
@@ -268,13 +268,13 @@ input[type="number"] { -moz-appearance: textfield; }
   gap: 16px;
   padding: 9px 0;
   border-bottom: 1px solid rgba(15, 23, 42, 0.07);
-  font-size: 16px;
+  font-size: 14px;
 }
 .loss-row:last-child { border-bottom: 0; }
 .loss-row strong { white-space: nowrap; align-self: center; }
 .loss-info { display: flex; flex-direction: column; min-width: 0; }
 .loss-name { font-weight: 500; }
-.original-milk { margin-top: 2px; font-size: 0.8rem; opacity: 0.58; white-space: nowrap; }
+.original-milk { margin-top: 2px; font-size: 0.7rem; opacity: 0.58; white-space: nowrap; }
 .mobile-name { display: none; }
 .loss-note { margin: 12px 0 0; font-size: 0.85rem; opacity: 0.65; }
 
@@ -334,7 +334,6 @@ input[type="number"] { -moz-appearance: textfield; }
 
   .formula {
     margin-top: 2px;
-    font-size: 10.5px;
     line-height: 1.2;
   }
 
@@ -395,13 +394,13 @@ input[type="number"] { -moz-appearance: textfield; }
 
   .loss-row {
     padding: 5px 0;
-    font-size: 16px;
+    font-size: 14px;
     gap: 8px;
   }
 
   .desktop-name { display: none; }
   .mobile-name { display: inline; }
-  .original-milk { margin-top: 1px; font-size: 9px; }
+  .original-milk { margin-top: 1px;}
 
   .loss-note {
     margin-top: 7px;
