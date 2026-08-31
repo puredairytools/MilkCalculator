@@ -73,6 +73,21 @@ function updateCalculation() {
 }
 
 Object.values(products).forEach((product) => {
+  // 使用者點入瓶數欄位時，若目前為預設值 0，先清空方便直接輸入。
+  product.input.addEventListener("focus", () => {
+    if (product.input.value === "0") {
+      product.input.value = "";
+    }
+  });
+
+  // 若離開欄位時沒有輸入內容，恢復顯示 0。
+  product.input.addEventListener("blur", () => {
+    if (product.input.value === "") {
+      product.input.value = "0";
+      updateCalculation();
+    }
+  });
+
   product.input.addEventListener("input", updateCalculation);
 });
 
