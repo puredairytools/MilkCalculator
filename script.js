@@ -28,6 +28,7 @@ const products = {
 
 const totalResult = document.getElementById("total-result");
 const resetButton = document.getElementById("reset-button");
+const lineShareButton = document.getElementById("line-share-button");
 const ashowLossResult = document.getElementById("ashow-loss");
 const siouguluanLossResult = document.getElementById("siouguluan-loss");
 const premiumLossResult = document.getElementById("premium-loss");
@@ -89,6 +90,31 @@ Object.values(products).forEach((product) => {
   });
 
   product.input.addEventListener("input", updateCalculation);
+});
+
+
+function buildShareText() {
+  const lines = ["【生乳量換算】"];
+
+  Object.values(products).forEach((product) => {
+    const bottles = getBottleCount(product.input);
+    if (bottles > 0) {
+      const name = product.input.closest(".product-card").querySelector("h2").textContent;
+      lines.push(`${name}：${bottles} 瓶／所需生乳 ${product.result.textContent} kg`);
+    }
+  });
+
+  lines.push("");
+  lines.push(`料損合計：${lossTotalResult.textContent} kg`);
+  lines.push(`生乳需求總量（含料損）：${totalResult.textContent} kg`);
+
+  return lines.join("\n");
+}
+
+lineShareButton.addEventListener("click", () => {
+  const text = buildShareText();
+  const lineUrl = `https://line.me/R/share?text=${encodeURIComponent(text)}`;
+  window.location.href = lineUrl;
 });
 
 resetButton.addEventListener("click", () => {

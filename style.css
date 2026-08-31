@@ -208,6 +208,35 @@ body {
   opacity: 0.7;
 }
 
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.line-share-button {
+  border: none;
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 10px 18px;
+  border-radius: 10px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.line-share-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.action-buttons .reset-button {
+  margin: 0;
+}
+
 .reset-button {
   display: block;
   margin: 18px auto 0;
