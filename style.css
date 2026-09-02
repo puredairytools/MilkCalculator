@@ -295,13 +295,15 @@ input[type="number"] { -moz-appearance: textfield; }
   display: flex;
   justify-content: space-between;
   gap: 16px;
+  height: 48px;
+  box-sizing: border-box;
   padding: 9px 0;
   border-bottom: 1px solid rgba(15, 23, 42, 0.07);
   font-size: 14px;
 }
 .loss-row:last-child { border-bottom: 0; }
 .loss-row strong { white-space: nowrap; align-self: center; }
-.loss-info { display: flex; flex-direction: column; min-width: 0; }
+.loss-info { display: flex; flex-direction: column; justify-content: center; min-width: 0; }
 .loss-name { font-weight: 500; }
 .original-milk { margin-top: 2px; font-size: 0.7rem; opacity: 0.58; white-space: nowrap; }
 .mobile-name { display: none; }
@@ -422,6 +424,7 @@ input[type="number"] { -moz-appearance: textfield; }
   }
 
   .loss-row {
+    height: 42px;
     padding: 5px 0;
     font-size: 14px;
     gap: 8px;
@@ -504,4 +507,26 @@ input[type="number"] { -moz-appearance: textfield; }
   .result-group > .result-line { overflow: visible; }
   .result-line { gap: 3px; }
   .result-line .result-label { font-size: 10.5px; }
+}
+
+/* Mobile: keep loss rows equal-height while adding breathing room above dividers. */
+@media (max-width: 600px) {
+  .loss-row {
+    height: 50px;
+    padding: 7px 0;
+  }
+
+  .loss-name {
+    line-height: 1.2;
+  }
+
+  .original-milk {
+    margin-top: 2px;
+    line-height: 1.2;
+  }
+}
+
+/* Vertically center the "料損合計" label within the total loss row. */
+.loss-row:last-of-type > span:first-child {
+  align-self: center;
 }
