@@ -95,7 +95,13 @@ Object.values(products).forEach((product) => {
     }
   });
 
-  product.input.addEventListener("input", updateCalculation);
+  //
+  // 僅保留 0-9，避免貼上或輸入非數字字元。
+  //
+  product.input.addEventListener("input", () => {
+    product.input.value = product.input.value.replace(/\D/g, "");
+    updateCalculation();
+  });
 });
 
 
