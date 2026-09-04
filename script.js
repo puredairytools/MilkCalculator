@@ -75,7 +75,12 @@ function updateCalculation() {
   lossTotalResult.textContent = totalLoss;
   const cf = Number.parseFloat(cfInput.value);
   const validCf = Number.isFinite(cf) && cf >= 0 ? cf : 1.08;
-  totalResult.textContent = ((rawMilkTotal + totalLoss) * validCf).toFixed(2);
+  //
+  // CF 套用於所有品項及其料損，優選（含優選料損）除外。
+  //
+  const cfApplicableTotal = (rawMilkTotal - milk.premium) + (totalLoss - premiumLoss);
+  const premiumTotal = milk.premium + premiumLoss;
+  totalResult.textContent = (cfApplicableTotal * validCf + premiumTotal).toFixed(2);
 }
 
 Object.values(products).forEach((product) => {
@@ -108,7 +113,7 @@ Object.values(products).forEach((product) => {
 });
 
 //
-// CF 可輸入小數；保留一個小數點並即時計算。
+// CF 可輸入小數，最多保留小數第二位，並即時計算。
 //
 cfInput.addEventListener("focus", () => {
   cfInput.select();
@@ -118,7 +123,9 @@ cfInput.addEventListener("input", () => {
   let value = cfInput.value.replace(/[^0-9.]/g, "");
   const firstDot = value.indexOf(".");
   if (firstDot !== -1) {
-    value = value.slice(0, firstDot + 1) + value.slice(firstDot + 1).replace(/\./g, "");
+    const integerPart = value.slice(0, firstDot + 1);
+    const decimalPart = value.slice(firstDot + 1).replace(/\./g, "").slice(0, 2);
+    value = integerPart + decimalPart;
   }
   cfInput.value = value;
   updateCalculation();
@@ -159,7 +166,7 @@ function buildShareText() {
 
   lines.push("────────");
   lines.push(`料損　${lossTotalResult.textContent} L`);
-  lines.push(`CF　${cfInput.value || "1.08"}`);
+  lines.push(`CF　${cfInput.value || "1.08"}（優選除外）`);
   lines.push(`總計　${totalResult.textContent} L`);
 
   return lines.join("\n");
