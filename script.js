@@ -62,7 +62,7 @@ function updateCalculation() {
   const ashowLoss = ashowCombined > 0 ? (ashowCombined >= 15000 ? 500 : 400) : 0;
   const siouguluanLoss = milk.siouguluan > 0 ? 180 : 0;
   const premiumLoss = milk.premium > 0 ? (milk.premium >= 15000 ? 300 : 200) : 0;
-  const totalLoss = (ashowLoss + siouguluanLoss + premiumLoss) * 1.08;
+  const totalLoss = ashowLoss + siouguluanLoss + premiumLoss;
 
   ashowOriginalResult.textContent = ashowCombined.toFixed(2);
   siouguluanOriginalResult.textContent = milk.siouguluan.toFixed(2);
@@ -72,7 +72,7 @@ function updateCalculation() {
   siouguluanLossResult.textContent = siouguluanLoss;
   premiumLossResult.textContent = premiumLoss;
   lossTotalResult.textContent = totalLoss;
-  totalResult.textContent = (rawMilkTotal + totalLoss).toFixed(2);
+  totalResult.textContent = ((rawMilkTotal + totalLoss) * 1.08).toFixed(2);
 }
 
 Object.values(products).forEach((product) => {
