@@ -36,6 +36,7 @@ const lossTotalResult = document.getElementById("loss-total");
 const ashowOriginalResult = document.getElementById("ashow-original");
 const siouguluanOriginalResult = document.getElementById("siouguluan-original");
 const premiumOriginalResult = document.getElementById("premium-original");
+const cfInput = document.getElementById("cf-value");
 
 function getBottleCount(input) {
   let value = Number(input.value);
@@ -72,7 +73,9 @@ function updateCalculation() {
   siouguluanLossResult.textContent = siouguluanLoss;
   premiumLossResult.textContent = premiumLoss;
   lossTotalResult.textContent = totalLoss;
-  totalResult.textContent = ((rawMilkTotal + totalLoss) * 1.08).toFixed(2);
+  const cf = Number.parseFloat(cfInput.value);
+  const validCf = Number.isFinite(cf) && cf >= 0 ? cf : 1.08;
+  totalResult.textContent = ((rawMilkTotal + totalLoss) * validCf).toFixed(2);
 }
 
 Object.values(products).forEach((product) => {
@@ -104,6 +107,39 @@ Object.values(products).forEach((product) => {
   });
 });
 
+//
+// CF 可輸入小數；保留一個小數點並即時計算。
+//
+cfInput.addEventListener("focus", () => {
+  cfInput.select();
+});
+
+cfInput.addEventListener("input", () => {
+  let value = cfInput.value.replace(/[^0-9.]/g, "");
+  const firstDot = value.indexOf(".");
+  if (firstDot !== -1) {
+    value = value.slice(0, firstDot + 1) + value.slice(firstDot + 1).replace(/\./g, "");
+  }
+  cfInput.value = value;
+  updateCalculation();
+});
+
+cfInput.addEventListener("blur", () => {
+  const value = Number.parseFloat(cfInput.value);
+  if (!Number.isFinite(value) || value < 0) {
+    cfInput.value = "1.08";
+  } else {
+    cfInput.value = String(value);
+  }
+  localStorage.setItem("milkCalculatorCf", cfInput.value);
+  updateCalculation();
+});
+
+const savedCf = localStorage.getItem("milkCalculatorCf");
+if (savedCf !== null && Number.isFinite(Number.parseFloat(savedCf))) {
+  cfInput.value = savedCf;
+}
+
 
 function buildShareText() {
   const lines = ["【生乳量換算】\n"];
@@ -123,6 +159,7 @@ function buildShareText() {
 
   lines.push("────────");
   lines.push(`料損　${lossTotalResult.textContent} L`);
+  lines.push(`CF　${cfInput.value || "1.08"}`);
   lines.push(`總計　${totalResult.textContent} L`);
 
   return lines.join("\n");
