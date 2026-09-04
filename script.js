@@ -174,8 +174,23 @@ function buildShareText() {
 
 lineShareButton.addEventListener("click", () => {
   const text = buildShareText();
-  const lineUrl = `https://line.me/R/share?text=${encodeURIComponent(text)}`;
-  window.location.href = lineUrl;
+
+  // LINE URL Scheme works well on mobile, while LINE Social Plugins
+  // provides a browser-based share screen that also supports desktop PCs.
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    const lineUrl = `https://line.me/R/share?text=${encodeURIComponent(text)}`;
+    window.location.href = lineUrl;
+    return;
+  }
+
+  const pageUrl = window.location.href.split("#")[0];
+  const lineShareUrl =
+    `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(pageUrl)}` +
+    `&text=${encodeURIComponent(text)}`;
+
+  window.open(lineShareUrl, "_blank", "noopener,noreferrer");
 });
 
 resetButton.addEventListener("click", () => {
