@@ -55,12 +55,14 @@ function updateCalculation() {
     rawMilkTotal += milk[key];
   });
 
+  //
   // 料損規則：15 噸 = 15,000 L。沒有生產該商品時，料損為 0。
+  //
   const ashowCombined = milk.ashow + milk.smallAshow + milk.transparent;
   const ashowLoss = ashowCombined > 0 ? (ashowCombined >= 15000 ? 500 : 400) : 0;
   const siouguluanLoss = milk.siouguluan > 0 ? 180 : 0;
   const premiumLoss = milk.premium > 0 ? (milk.premium >= 15000 ? 300 : 200) : 0;
-  const totalLoss = ashowLoss + siouguluanLoss + premiumLoss;
+  const totalLoss = (ashowLoss + siouguluanLoss + premiumLoss) * 1.08;
 
   ashowOriginalResult.textContent = ashowCombined.toFixed(2);
   siouguluanOriginalResult.textContent = milk.siouguluan.toFixed(2);
