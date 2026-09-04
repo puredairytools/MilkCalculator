@@ -27,7 +27,8 @@ body {
 .container {
   width: 100%;
   max-width: 900px;
-  margin: 10px auto;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .header { margin-bottom: 30px; }
