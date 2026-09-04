@@ -198,6 +198,27 @@ body {
 
 .total-card h2 { font-size: 20px; }
 
+.total-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.total-note {
+  display: inline-block;
+  margin-top: 0;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+  opacity: 0.78;
+  white-space: nowrap;
+}
+
+
 .total-result { white-space: nowrap; }
 
 .total-result strong {
@@ -458,6 +479,16 @@ input[type="number"] { -moz-appearance: textfield; }
 
   .total-card h2 {
     font-size: 13px;
+  }
+
+  .total-title-row {
+    gap: 5px;
+  }
+
+  .total-note {
+    margin-top: 0;
+    padding: 2px 6px;
+    font-size: 9px;
   }
 
   .total-result {
