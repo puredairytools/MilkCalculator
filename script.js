@@ -2,27 +2,27 @@ const products = {
   ashow: {
     input: document.getElementById("ashow"),
     result: document.getElementById("ashow-result"),
-    calculate: (bottles) => bottles * 0.936 * 1.03 * 1.08
+    calculate: (bottles) => bottles * 0.936
   },
   smallAshow: {
     input: document.getElementById("small-ashow"),
     result: document.getElementById("small-ashow-result"),
-    calculate: (bottles) => bottles * 0.29 * 1.03 * 1.08
+    calculate: (bottles) => bottles * 0.29
   },
   transparent: {
     input: document.getElementById("transparent"),
     result: document.getElementById("transparent-result"),
-    calculate: (bottles) => bottles * 0.936 * 1.03 * 1.08
+    calculate: (bottles) => bottles * 0.936
   },
   siouguluan: {
     input: document.getElementById("siouguluan"),
     result: document.getElementById("siouguluan-result"),
-    calculate: (bottles) => bottles * 0.936 * 1.03
+    calculate: (bottles) => bottles * 0.936
   },
   premium: {
     input: document.getElementById("premium"),
     result: document.getElementById("premium-result"),
-    calculate: (bottles) => bottles * 1.75 * 1.03
+    calculate: (bottles) => bottles * 1.75
   }
 };
 
@@ -55,11 +55,11 @@ function updateCalculation() {
     rawMilkTotal += milk[key];
   });
 
-  // 料損規則：15 噸 = 15,000 kg。沒有生產該商品時，料損為 0。
+  // 料損規則：15 噸 = 15,000 L。沒有生產該商品時，料損為 0。
   const ashowCombined = milk.ashow + milk.smallAshow + milk.transparent;
-  const ashowLoss = ashowCombined > 0 ? (ashowCombined >= 15000 ? 648 : 432) : 0;
+  const ashowLoss = ashowCombined > 0 ? (ashowCombined >= 15000 ? 500 : 400) : 0;
   const siouguluanLoss = milk.siouguluan > 0 ? 180 : 0;
-  const premiumLoss = milk.premium > 0 ? (milk.premium >= 15000 ? 400 : 200) : 0;
+  const premiumLoss = milk.premium > 0 ? (milk.premium >= 15000 ? 300 : 200) : 0;
   const totalLoss = ashowLoss + siouguluanLoss + premiumLoss;
 
   ashowOriginalResult.textContent = ashowCombined.toFixed(2);
@@ -74,14 +74,18 @@ function updateCalculation() {
 }
 
 Object.values(products).forEach((product) => {
+  //
   // 使用者點入瓶數欄位時，若目前為預設值 0，先清空方便直接輸入。
+  //
   product.input.addEventListener("focus", () => {
     if (product.input.value === "0") {
       product.input.value = "";
     }
   });
 
+  //
   // 若離開欄位時沒有輸入內容，恢復顯示 0。
+  //
   product.input.addEventListener("blur", () => {
     if (product.input.value === "") {
       product.input.value = "0";
@@ -103,15 +107,15 @@ function buildShareText() {
     if (bottles > 0) {
       const name = product.input.closest(".product-card").querySelector("h2").textContent;
       lines.push(`${index}. ${name}`);
-      lines.push(`${bottles} 瓶｜${product.result.textContent} kg`);
+      lines.push(`${bottles} 瓶｜${product.result.textContent} L`);
       lines.push("");
       index += 1;
     }
   });
 
   lines.push("────────");
-  lines.push(`料損　${lossTotalResult.textContent} kg`);
-  lines.push(`總計　${totalResult.textContent} kg`);
+  lines.push(`料損　${lossTotalResult.textContent} L`);
+  lines.push(`總計　${totalResult.textContent} L`);
 
   return lines.join("\n");
 }
